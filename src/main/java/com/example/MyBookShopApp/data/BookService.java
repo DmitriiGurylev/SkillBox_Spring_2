@@ -33,4 +33,18 @@ public class BookService {
         return new ArrayList<>(books);
     }
 
+//    public List<Genre> getGenresData() {
+//        List<Genre> genres = jdbcTemplate.query(
+//                "SELECT * FROM books",
+//                (ResultSet rs, int rowNum) -> {
+//                    Book book = new Book();
+//                    book.setId(rs.getInt("id"));
+//                    book.setAuthor(rs.getString("author"));
+//                    book.setTitle(rs.getString("title"));
+//                    book.setPriceOld(rs.getString("priceOld"));
+//                    book.setPrice(rs.getString("price"));
+//                    return book;
+//                });
+//        return new ArrayList<>(genres);
+//    }
 }
