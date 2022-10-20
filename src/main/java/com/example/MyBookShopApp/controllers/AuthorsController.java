@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping
-public class GenresController {
+public class AuthorsController {
 
     @Autowired
     BookService bookService;
 
-    @GetMapping("/genres")
-    public String genresPage(Model model){
-//        model.addAttribute("genreData", bookService.getGenresData());
-        return "genres/index";
+    @GetMapping("/authors")
+    public String authorsPage(Model model){
+        model.addAttribute("authorData", bookService.getAuthorsData());
+        return "authors/index";
     }
 }

@@ -20,31 +20,33 @@ public class BookService {
 
     public List<Book> getBooksData() {
         List<Book> books = jdbcTemplate.query(
-                "SELECT * FROM books",
+                "SELECT books.id, books.title, books.priceOld, books.price, authors.name AS author " +
+                        "FROM books " +
+                        "INNER JOIN authors " +
+                        "ON books.authorId = authors.id"
+                ,
                 (ResultSet rs, int rowNum) -> {
-            Book book = new Book();
-            book.setId(rs.getInt("id"));
-            book.setAuthor(rs.getString("author"));
-            book.setTitle(rs.getString("title"));
-            book.setPriceOld(rs.getString("priceOld"));
-            book.setPrice(rs.getString("price"));
-            return book;
-        });
+                    Book book = new Book();
+                    book.setId(rs.getInt("id"));
+                    book.setAuthor(rs.getString("author"));
+                    book.setTitle(rs.getString("title"));
+                    book.setPriceOld(rs.getString("priceOld"));
+                    book.setPrice(rs.getString("price"));
+                    return book;
+                });
         return new ArrayList<>(books);
     }
 
-//    public List<Genre> getGenresData() {
-//        List<Genre> genres = jdbcTemplate.query(
-//                "SELECT * FROM books",
-//                (ResultSet rs, int rowNum) -> {
-//                    Book book = new Book();
-//                    book.setId(rs.getInt("id"));
-//                    book.setAuthor(rs.getString("author"));
-//                    book.setTitle(rs.getString("title"));
-//                    book.setPriceOld(rs.getString("priceOld"));
-//                    book.setPrice(rs.getString("price"));
-//                    return book;
-//                });
-//        return new ArrayList<>(genres);
-//    }
+    public List<Author> getAuthorsData() {
+        List<Author> authors = jdbcTemplate.query(
+                "SELECT * FROM authors",
+                (ResultSet rs, int rowNum) -> {
+                    Author author = new Author();
+                    author.setId(rs.getInt("id"));
+                    author.setName(rs.getString("name"));
+                    return author;
+                });
+        return new ArrayList<>(authors);
+    }
+
 }
