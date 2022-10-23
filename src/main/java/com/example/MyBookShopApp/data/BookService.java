@@ -23,8 +23,7 @@ public class BookService {
                 "SELECT books.id, books.title, books.priceOld, books.price, authors.name AS author " +
                         "FROM books " +
                         "INNER JOIN authors " +
-                        "ON books.authorId = authors.id"
-                ,
+                        "ON books.authorId = authors.id",
                 (ResultSet rs, int rowNum) -> {
                     Book book = new Book();
                     book.setId(rs.getInt("id"));

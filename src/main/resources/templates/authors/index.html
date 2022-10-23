@@ -100,10 +100,10 @@ p.error-browser
         <div class="Authors">
           <div class="Authors-links"><a class="Authors-link" href="#a">А</a><a class="Authors-link" href="#b">Б</a><a class="Authors-link" href="#v">В</a><a class="Authors-link" href="#g">Г</a><a class="Authors-link" href="#d">Д</a><a class="Authors-link" href="#e">Е</a><a class="Authors-link" href="#e">Ё</a><a class="Authors-link" href="#ge">Ж</a><a class="Authors-link" href="#z">З</a><a class="Authors-link" href="#i">И</a><a class="Authors-link" href="#ik">Й</a><a class="Authors-link" href="#k">К</a><a class="Authors-link" href="#l">Л</a><a class="Authors-link" href="#m">М</a><a class="Authors-link" href="#n">Н</a><a class="Authors-link" href="#o">О</a><a class="Authors-link" href="#p">П</a><a class="Authors-link" href="#r">Р</a><a class="Authors-link" href="#s">С</a><a class="Authors-link" href="#t">Т</a><a class="Authors-link" href="#u">У</a><a class="Authors-link" href="#f">Ф</a><a class="Authors-link" href="#h">Х</a><a class="Authors-link" href="#c">Ц</a><a class="Authors-link" href="#ch">Ч</a><a class="Authors-link" href="#sh">Ш</a><a class="Authors-link" href="#shh">Щ</a><a class="Authors-link" href="#ye">Э</a><a class="Authors-link" href="#yu">Ю</a><a class="Authors-link" href="#ya">Я</a>
           </div>
-          <div class="Authors-block" th:each="firstLetter : ${authorData.keySet()}">
+          <div class="Authors-block" th:each="firstLetter : ${firstLetterAuthors.keySet()}">
             <h2 class="Authors-title" id="$firstLetter" th:text="${firstLetter}">
             </h2>
-            <div class="Authors-letter" th:each="author : ${authorData.get(firstLetter)}">
+            <div class="Authors-letter" th:each="author : ${firstLetterAuthors.get(firstLetter)}">
               <div class="Authors-item"><a href="/authors/slug.html" th:text="${author.name}">Абгарян Наринэ</a>
               </div>
             </div>
@@ -134,15 +134,15 @@ p.error-browser
       </div>
       <div class="row-block">
         <ul class="menu menu_vt Footer-menu">
-          <li class="menu-item"><a class="menu-link" href="/bookshop/main">Главная</a>
+          <li class="menu-item menu-item_ACTIVE"><a class="menu-link" href="/bookshop/main" th:text="#{topbar.main}">Главная</a>
           </li>
-          <li class="menu-item"><a class="menu-link" href="/genres">Жанры</a>
+          <li class="menu-item"><a class="menu-link" href="/genres" th:text="#{topbar.genres}">Жанры</a>
           </li>
-          <li class="menu-item"><a class="menu-link" href="/books/recent.html">Новинки</a>
+          <li class="menu-item"><a class="menu-link" href="/books/recent.html" th:text="#{topbar.news}">Новинки</a>
           </li>
-          <li class="menu-item"><a class="menu-link" href="/books/popular.html">Популярное</a>
+          <li class="menu-item"><a class="menu-link" href="/books/popular.html" th:text="#{topbar.popular}">Популярное</a>
           </li>
-          <li class="menu-item"><a class="menu-link" href="/authors">Авторы</a>
+          <li class="menu-item"><a class="menu-link" href="/authors" th:text="#{topbar.authors}">Авторы</a>
           </li>
         </ul>
       </div>

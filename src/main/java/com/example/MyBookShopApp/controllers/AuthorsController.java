@@ -22,8 +22,6 @@ public class AuthorsController {
 
     @GetMapping("/authors")
     public String authorsPage(Model model){
-//        model.addAttribute("authorData", bookService.getAuthorsData());
-
         Map<Character, LinkedList<Author>> firstLetterAuthors = new HashMap<>();
         bookService.getAuthorsData()
                 .forEach(ad -> {
@@ -38,9 +36,7 @@ public class AuthorsController {
                         firstLetterAuthors.put(ch, ll);
                     }
                 });
-        model.addAttribute("authorData", firstLetterAuthors);
-
-
+        model.addAttribute("firstLetterAuthors", firstLetterAuthors);
         return "authors/index";
-}
+    }
 }
