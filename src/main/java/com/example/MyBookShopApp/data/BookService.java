@@ -29,8 +29,8 @@ public class BookService {
                     book.setId(rs.getInt("id"));
                     book.setAuthor(rs.getString("author"));
                     book.setTitle(rs.getString("title"));
-                    book.setPriceOld(rs.getString("priceOld"));
-                    book.setPrice(rs.getString("price"));
+                    book.setPriceOld(rs.getInt("priceOld"));
+                    book.setPrice(rs.getInt("price"));
                     return book;
                 });
         return new ArrayList<>(books);
